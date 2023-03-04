@@ -86,7 +86,7 @@ namespace Psinder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] Post post, IFormFile image= null)
         {
             if (id != post.Id)
             {
@@ -95,6 +95,13 @@ namespace Psinder.Controllers
 
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    post.ImageMimeType = image.ContentType;
+                    post.ImageData = new byte[image.Length];
+                    var stream = image.OpenReadStream();
+                    stream.BeginRead(post.ImageData, 0, (int)image.Length, null, null);
+                }
                 try
                 {
                     _context.Update(post);
@@ -156,6 +163,19 @@ namespace Psinder.Controllers
         private bool PostExists(int id)
         {
           return _context.Posts.Any(e => e.Id == id);
+        }
+
+        public FileContentResult GetImage(int productId)
+        {
+            Post prod = _context.Posts.FirstOrDefault(p => p.Id == productId);
+            if (prod != null)
+            {
+                return File(prod.ImageData, prod.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
