@@ -54,7 +54,7 @@ namespace Psinder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Psinder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] Post post)
         {
             if (id != post.Id)
             {
