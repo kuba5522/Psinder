@@ -15,4 +15,9 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-image: url('Tlo_las.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #ac3131;
 }
