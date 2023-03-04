@@ -23,7 +23,7 @@ namespace Psinder.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Posts.ToListAsync());
+              return View(await _context.Posts.OrderByDescending(p=>p.Id).ToListAsync());
         }
 
         // GET: Posts/Details/5
