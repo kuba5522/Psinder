@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-tlo">
+
+      
+
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">PSINDER </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <button class="btn2 btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Panel użytkownika
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="#">Załóż konto</a></li>
+                  <li><a class="dropdown-item" href="#">Zaloguj się</a></li>
+                  
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <title>Nasi przyjaciele  </title>
+
+    <style>
+      
+
+        .navbar
+         {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            background-color: rgb(0, 14, 10);
+            
+        }
+        .navbar-brand
+         {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            color: rgb(5, 0, 0);
+            font-size: 30px;
+        }
+      
+       
+        .btn-dark 
+         {
+            font-family: Arial, sans-serif;
+            background-color: rgb(201, 255, 201);
+            color: rgb(0, 0, 0);
+            display: absolute;
+            
+        }
+
+        .container-fluid
+         {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            background-color: rgb(219, 219, 219);
+            color: rgb(207, 16, 61);
+            background-image: url('tlo3.jpg');
+            
+         }
+         .bg-tlo
+         {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            background-color: rgb(201, 255, 201);
+            
+         }
+    
+         .col-4
+         {
+          background-color: red;
+          border-width: 10px;
+          border-color: #333;       
+          border-style: solid;  
+        }
+          .przyciski { 
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          
+          padding: 10px;
+          margin: 10px;
+          background-color: brak;           <!-- Tutaj dodać kolor naglówka, jeśli brak to jest od tła strony -->
+        }
+       
+      body {
+        background-image: url('tlo3.jpg');
+        
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 48px;
+        color: #333;
+      }
+      .dog-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+      .dog-card {
+        width: 30%;
+        margin-bottom: 30px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+      }
+      .dog-card:hover {
+        transform: scale(1.05);
+      }
+      .dog-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .dog-card h2 {
+        margin: 0;
+        padding: 10px;
+        font-size: 24px;
+        color: #333;
+        background-color: #f2f2f2;
+        border-bottom: 1px solid #ddd;
+      }
+      .dog-card p {
+        margin: 0;
+        padding: 10px;
+        font-size: 18px;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      #wsparcie {
+          background-color: #c78a8a;
+          display: flex;
+          justify-content: end;
+          align-items: center;
+          padding: 10px;
+          font-family: Apple Chancery, cursive;
+          position: absolute;
+          right: 0;
+          margin: 30px;
+      }
+
+      .card-body {
+        background-color: rgb(201, 255, 201);
+      }
+
+      .btn {
+        background-color: #c5c5c5;
+        color: #333;
+      }
+      
+
+    </style>
+  </head>
+  <body>
+
+
+    
+    <div class="przyciski">
+        
+      <button type="button" class="btn btn-outline-secondary">Nasza misja</button>
+      <button type="button" class="btn btn-outline-secondary">Organizacje,z którymi współpracujemy</button>
+      <button type="button" class="btn btn-outline-secondary">Dołącz do nas !</button>
+     
+      <!-- <button>Przycisk 1</button> -->
+    </div>
+    
+    <!-- <button id="wsparcie" class="btn btn-primary btn-lg"> Wesprzyj zwierzaki !</button> -->
+    <a href="https://ratujemyzwierzaki.pl" class="btn btn-primary btn-lg" id="wsparcie">Wesprzyj zwierzaki !</a>
+
+
+    <div class="container">
+      <h1>Nasze skarby</h1>
+      <div class="dog-list">
+        <div class="dog-card">
+          <img src="pies1.jpg" alt="Pies 1" />
+          <h2>Korti, 7 lat</h2>
+          <p>
+            Przyjazny, radosny i uwielbia długie spacery ! 
+          </p>
+          <a href="#" >Poznaj mnie</a>
+        </div>
+        <div class="dog-card">
+          <img src="Pies2.jpg" alt="Pies 2" />
+          <h2>Luna, 3 lata</h2>
+          <p>
+            Malutka i pełna energii ! Wygląda niepozornie ale potrafi pokazać ząbki. Piesek nie może zostać w domu ze względu na alergię.
+          </p>
+          <a href="#">Poznaj mnie</a>
+        </div>
+        <div class="dog-card">
+          <img src="Pies3.jpg" alt="Pies 3" />
+          <h2>Rex, około 10 l.</h2>
+          <p>
+            Piesek, który już długo czeka, a nie wiemy dlaczego ? Oferuje całe serduszko, jest grzeczny i posłuszny. Tylko trochę nieśmiały...
+          </p>
+          <a href="#">Poznaj mnie</a>
+        </div>
+      </div>
+    </div>
+
+
+  
+    <div class="card text-center">
+  <img src="..." class="card-img-top" alt="">
+
+  <div class="card-body">
+    <a href="#" class="btn btn-primary" style=width: 10%; >Pokaż wszystkie !</a>
+  </div>
+</div>
+
+
+  </body>
+</html>
