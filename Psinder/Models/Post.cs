@@ -18,7 +18,7 @@ namespace Psinder.Models
 
         public string Description { get; set; }
 
-        public string ImagePath { get; set; }
+        public string? ImagePath { get; set; }
 
         public string ContactPhone { get; set; }
         public string ContactEmail { get; set; }
