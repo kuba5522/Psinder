@@ -1,15 +1,24 @@
-﻿@model IEnumerable<Psinder.Models.Post>
+﻿@model IEnumerable<Psinder.Models.PostDTO>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style >div{color: white}</style>
-<style >td{color: white}</style>
-<style >tr{color: white}</style>
-<div class="text-center">
-    <h1 class="display-4">PSINDER</h1>
-</div>
+
+<style>
+    div {
+        color: white
+    }</style>
+<style>
+    td {
+        color: white
+    }</style>
+<style>
+    tr {
+        color: white
+    }</style>
+<h1>Index</h1>
+
 
 <p>
     <a id="createNew" asp-action="Create">
@@ -18,6 +27,7 @@
         </h3>
     </a>
 </p>
+
 <div id="allPost">
     <h6 style="text-align:center;vertical-align:middle;margin-bottom: 0px;height: 35px;">Wszystkie ogłoszenia</h6>
 </div>

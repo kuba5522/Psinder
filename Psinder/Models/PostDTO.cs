@@ -2,12 +2,13 @@
 
 namespace Psinder.Models
 {
-    public class Post
+    public class PostDTO
     {
+        [Key]
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Tytuł ogłoszenia")]
+        [Display(Name="Tytuł ogłoszenia")]
         public string Title { get; set; }
         [Display(Name = "Imię")]
         public string Name { get; set; }
@@ -26,6 +27,8 @@ namespace Psinder.Models
         public string Description { get; set; }
 
         public string? ImagePath { get; set; }
+
+        public byte[]? Image { get; set; }
 
         [Display(Name = "Telefon kontaktowy")]
         public string ContactPhone { get; set; }
