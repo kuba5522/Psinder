@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Psinder.Data;
 using Psinder.Models;
 using Psinder.Services;
+using PagedList;
+
 
 
 namespace Psinder.Controllers

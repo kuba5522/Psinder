@@ -4,6 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <style>
     div {
         color: white
@@ -18,51 +19,45 @@
     }</style>
 <h1>Index</h1>
 
+
 <p>
-    <a asp-action="Create">Create New</a>
+    <a id="createNew" asp-action="Create">
+        <h3>
+            +Create New 
+        </h3>
+    </a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @foreach (var post in Model)
-                    {
-                        if (post.Image != null)
-                        {
-                            <div class="pull-left" style="margin-right: 10px">
-                                <img class="img-thumbnail" width="75" height="75"
-                         src="@Url.Action("GetImage", "Product", new { post.Id })" />
-                            </div>
-                        }
 
-                    }
-                </td>
+<div id="allPost">
+    <h6 style="text-align:center;vertical-align:middle;margin-bottom: 0px;height: 35px;">Wszystkie ogłoszenia</h6>
+</div>
+<div class="flex-container">
+@foreach (var item in Model) {
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
-            </tr>
+    <a class="card" asp-action="Details" asp-route-id="@item.Id">
+
+
+        <img id="imagePost"  src="~/images/licensed-image.jpg">
+         
+        <div id="headerPost">@Html.DisplayFor(modelItem => item.Name) </div>
+
+        <div id="destPost">@Html.DisplayFor(modelItem => item.Title)</div>
+
+    </a>
+
+@*        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>*@
         }
-    </tbody>
-</table>
+</div>
+
