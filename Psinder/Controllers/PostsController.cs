@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Psinder.Data;
 using Psinder.Models;
+using PagedList;
 
 
 namespace Psinder.Controllers

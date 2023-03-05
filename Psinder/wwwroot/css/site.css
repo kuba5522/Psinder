@@ -21,3 +21,45 @@ body {
   background-size: cover;
   background-color: #ac3131;
 }
+
+#createNew {
+    float: right;
+    text-decoration: unset;
+    color: white;
+}
+
+#allPost {
+    background-color: gray;
+    height: 35px;
+    top: 30px;
+    position: relative;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin: 25px;
+    padding: 10px;
+}
+.card {
+    height: 200px;
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+}
+#headerPost
+{
+    color: black;
+
+}
+#destPost{
+    color:black;
+}
+
+#imagePost {
+    max-width: 250px;
+    max-height: 100px;
+    object-fit: cover;
+}

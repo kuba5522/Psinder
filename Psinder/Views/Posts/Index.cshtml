@@ -7,26 +7,35 @@
 <style >div{color: white}</style>
 <style >td{color: white}</style>
 <style >tr{color: white}</style>
-<h1>Index</h1>
+<div class="text-center">
+    <h1 class="display-4">PSINDER</h1>
+</div>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a id="createNew" asp-action="Create">
+        <h3>
+            +Create New 
+        </h3>
+    </a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+<div id="allPost">
+    <h6 style="text-align:center;vertical-align:middle;margin-bottom: 0px;height: 35px;">Wszystkie ogłoszenia</h6>
+</div>
+<div class="flex-container">
 @foreach (var item in Model) {
-        <tr>
+
+    <a class="card" asp-action="Details" asp-route-id="@item.Id">
+
+
+        <img id="imagePost"  src="~/images/licensed-image.jpg">
+         
+        <div id="headerPost">@Html.DisplayFor(modelItem => item.Name) </div>
+
+        <div id="destPost">@Html.DisplayFor(modelItem => item.Title)</div>
+
+    </a>
+
+@*        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -38,7 +47,7 @@
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
-        </tr>
-}
-    </tbody>
-</table>
+        </tr>*@
+        }
+</div>
+
