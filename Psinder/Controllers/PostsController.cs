@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Psinder.Data;
 using Psinder.Models;
+using Psinder.Services;
 
 
 namespace Psinder.Controllers
@@ -14,10 +15,12 @@ namespace Psinder.Controllers
     public class PostsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IFileStorage _fileStorage;
 
-        public PostsController(ApplicationDbContext context)
+        public PostsController(ApplicationDbContext context, IFileStorage fileStorage)
         {
             _context = context;
+            _fileStorage = fileStorage;
         }
 
         // GET: Posts
@@ -62,21 +65,10 @@ namespace Psinder.Controllers
                 _context.Add(post);
                 await _context.SaveChangesAsync();
 
-                var filePath = @"\PostsImages";
-                if (!Directory.Exists(filePath))
-                {
-                Directory.CreateDirectory(filePath);
-
-                } 
-                var imagePath = Path.Combine(filePath, post.Id.ToString());
-
                 var stream = image.OpenReadStream();
                 byte[] buffer = new byte[stream.Length];
                 stream.ReadAsync(buffer, 0, buffer.Length);
-                var fileStream = System.IO.File.Create(imagePath);
-                fileStream.Write(buffer, 0, buffer.Length);
-                
-
+                _fileStorage.SaveFile(buffer, post.Id.ToString());
 
                 return RedirectToAction(nameof(Index));
             }
@@ -131,7 +123,7 @@ namespace Psinder.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(post);
+            return View(post, );
         }
 
         // GET: Posts/Delete/5

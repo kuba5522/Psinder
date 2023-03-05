@@ -12,7 +12,7 @@ namespace Psinder.Models
         public string Title { get; set; }
         [Display(Name = "Imię")]
         public string Name { get; set; }
-        [Display(Name = "WIek")]
+        [Display(Name = "Wiek")]
         public int Age { get; set; }
         [Display(Name = "Rozmiar")]
         public string Size { get; set; }

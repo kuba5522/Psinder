@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Psinder.Data;
+using Psinder.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddSingleton<IFileStorage, LocalStorageProvider>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
