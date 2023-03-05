@@ -19,7 +19,7 @@ namespace Psinder.Controllers
         private readonly IFileStorage _fileStorage;
         private readonly IMapper _mapper;
 
-        public PostsController(ApplicationDbContext context,IFileStorage fileStorage ,IMapper mapper)
+        public PostsController(ApplicationDbContext context, IFileStorage fileStorage, IMapper mapper)
         {
             _context = context;
             _fileStorage = fileStorage;
@@ -31,8 +31,8 @@ namespace Psinder.Controllers
         {
             var posts = _context.Posts;
 
-            var postsMappedAndOrdered = _mapper.Map<IEnumerable<PostDTO>>(posts).OrderByDescending(p=> p.Id).ToList();
-            foreach(var post in postsMappedAndOrdered)
+            var postsMappedAndOrdered = _mapper.Map<IEnumerable<PostDTO>>(posts).OrderByDescending(p => p.Id).ToList();
+            foreach (var post in postsMappedAndOrdered)
             {
                 var imageFile = _fileStorage.GetImageFile(post.Id.ToString());
                 post.Image = imageFile;
@@ -171,19 +171,19 @@ namespace Psinder.Controllers
             {
                 _context.Posts.Remove(post);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PostExists(int id)
         {
-          return _context.Posts.Any(e => e.Id == id);
+            return _context.Posts.Any(e => e.Id == id);
         }
 
-        public FileContentResult GetImage(int postId)
+        public FileContentResult GetImage([FromRoute] int Id)
         {
-            byte[]? imageData = _fileStorage.GetImageFile(postId.ToString());
+            byte[]? imageData = _fileStorage.GetImageFile(Id.ToString());
 
             if (imageData != null)
             {
@@ -194,5 +194,5 @@ namespace Psinder.Controllers
                 return null;
             }
         }
-    }
+        }
 }

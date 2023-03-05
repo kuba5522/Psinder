@@ -17,7 +17,7 @@
         color: white
     }</style>
 <h1>Index</h1>
-
+<form enctype="multipart/form-data"></form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -41,17 +41,13 @@
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @foreach (var post in Model)
-                    {
-                        if (post.Image != null)
+                        @if (item.Image != null)
                         {
                             <div class="pull-left" style="margin-right: 10px">
                                 <img class="img-thumbnail" width="75" height="75"
-                         src="@Url.Action("GetImage", "Posts", post.Id )" />
+                         src="@Url.Action("GetImage", "Posts", new {item.Id} )" />
                             </div>
                         }
-
-                    }
                 </td>
 
                 <td>
