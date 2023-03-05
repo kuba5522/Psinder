@@ -8,29 +8,29 @@ namespace Psinder.Models
         public int Id { get; set; }
 
         [Required]
-        [Display(Name="Tytuł ogłoszenia")]
+        [Display(Name="Tytuł ogłoszenia*")]
         public string Title { get; set; }
-        [Display(Name = "Imię")]
+        [Display(Name = "Imię psa")]
         public string Name { get; set; }
-        [Display(Name = "WIek")]
+        [Display(Name = "Wiek*")]
         public int Age { get; set; }
-        [Display(Name = "Rozmiar")]
+        [Display(Name = "Wielkość*")]
         public string Size { get; set; }
-        [Display(Name = "Rasa")]
+        [Display(Name = "Rasa*")]
         public string Breed { get; set; }
         [Display(Name = "Trudność")]
         public string Difficulty { get; set; }
-        [Display(Name = "Lokalizacja")]
+        [Display(Name = "Lokalizacja*")]
         public string Location { get; set; }
 
-        [Display(Name = "Opis")]
+        [Display(Name = "Opis*")]
         public string Description { get; set; }
 
         public string? ImagePath { get; set; }
 
-        [Display(Name = "Telefon kontaktowy")]
+        [Display(Name = "Telefon kontaktowy*")]
         public string ContactPhone { get; set; }
-        [Display(Name = "Email kontaktowy")]
+        [Display(Name = "Email kontaktowy*")]
         public string ContactEmail { get; set; }
     }
 }
