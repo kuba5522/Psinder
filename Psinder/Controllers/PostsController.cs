@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Psinder.Data;
 using Psinder.Models;
+using Psinder.Services;
 
 
 namespace Psinder.Controllers
@@ -14,16 +16,29 @@ namespace Psinder.Controllers
     public class PostsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IFileStorage _fileStorage;
+        private readonly IMapper _mapper;
 
-        public PostsController(ApplicationDbContext context)
+        public PostsController(ApplicationDbContext context,IFileStorage fileStorage ,IMapper mapper)
         {
             _context = context;
+            _fileStorage = fileStorage;
+            _mapper = mapper;
         }
 
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Posts.OrderByDescending(p=>p.Id).ToListAsync());
+            var posts = _context.Posts;
+
+            var postsMappedAndOrdered = _mapper.Map<IEnumerable<PostDTO>>(posts).OrderByDescending(p=> p.Id).ToList();
+            foreach(var post in postsMappedAndOrdered)
+            {
+                var imageFile = _fileStorage.GetImageFile(post.Id.ToString());
+                post.Image = imageFile;
+            }
+
+            return View(postsMappedAndOrdered);
         }
 
         // GET: Posts/Details/5
@@ -55,32 +70,22 @@ namespace Psinder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] Post post, IFormFile image)
+        public async Task<IActionResult> Create([Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] PostDTO postDto, IFormFile image)
         {
             if (ModelState.IsValid)
             {
+                var post = _mapper.Map<Post>(postDto);
                 _context.Add(post);
                 await _context.SaveChangesAsync();
-
-                var filePath = @"\PostsImages";
-                if (!Directory.Exists(filePath))
-                {
-                Directory.CreateDirectory(filePath);
-
-                } 
-                var imagePath = Path.Combine(filePath, post.Id.ToString());
 
                 var stream = image.OpenReadStream();
                 byte[] buffer = new byte[stream.Length];
                 stream.ReadAsync(buffer, 0, buffer.Length);
-                var fileStream = System.IO.File.Create(imagePath);
-                fileStream.Write(buffer, 0, buffer.Length);
-                
-
+                _fileStorage.SaveFile(buffer, post.Id.ToString());
 
                 return RedirectToAction(nameof(Index));
             }
-            return View(post);
+            return View(postDto);
         }
 
         // GET: Posts/Edit/5
@@ -104,7 +109,7 @@ namespace Psinder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] Post post, IFormFile image)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] PostDTO post, IFormFile image)
         {
             if (id != post.Id)
             {
@@ -175,5 +180,7 @@ namespace Psinder.Controllers
         {
           return _context.Posts.Any(e => e.Id == id);
         }
+
+
     }
 }

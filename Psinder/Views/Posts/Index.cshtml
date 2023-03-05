@@ -1,12 +1,21 @@
-﻿@model IEnumerable<Psinder.Models.Post>
+﻿@model IEnumerable<Psinder.Models.PostDTO>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style >div{color: white}</style>
-<style >td{color: white}</style>
-<style >tr{color: white}</style>
+<style>
+    div {
+        color: white
+    }</style>
+<style>
+    td {
+        color: white
+    }</style>
+<style>
+    tr {
+        color: white
+    }</style>
 <h1>Index</h1>
 
 <p>
@@ -25,20 +34,35 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @foreach (var post in Model)
+                    {
+                        if (post.Image != null)
+                        {
+                            <div class="pull-left" style="margin-right: 10px">
+                                <img class="img-thumbnail" width="75" height="75"
+                         src="@Url.Action("GetImage", "Product", new { post.Id })" />
+                            </div>
+                        }
+
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -2,7 +2,7 @@
 
 namespace Psinder.Models
 {
-    public class Post
+    public class CreatePostDto
     {
         public int Id { get; set; }
 
