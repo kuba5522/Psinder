@@ -29,18 +29,53 @@ namespace Psinder.Controllers
         }
 
         // GET: Posts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? page)
         {
-            var posts = _context.Posts;
+            ViewBag.IndexSortParm = sortOrder == "index" ? "index_desc" : "index";
+            ViewBag.CurrentSort = sortOrder;
 
-            var postsMappedAndOrdered = _mapper.Map<IEnumerable<PostDTO>>(posts).OrderByDescending(p=> p.Id).ToList();
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var posts = from p in _context.Posts select p;
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                posts = posts.Where(p => p.Title.Contains(searchString)
+                                       || p.Description.Contains(searchString));
+            }
+            switch(sortOrder)
+            {
+                case "index":
+                    posts = posts.OrderBy(p => p.Id);
+                    break;
+
+                case "index_desc":
+                    posts = posts.OrderByDescending(p => p.Id);
+                    break;
+            }
+
+            //var posts = _context.Posts;
+
+            var postsMappedAndOrdered = _mapper.Map<IEnumerable<PostDTO>>(posts).ToList();
             foreach(var post in postsMappedAndOrdered)
             {
                 var imageFile = _fileStorage.GetImageFile(post.Id.ToString());
                 post.Image = imageFile;
             }
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
 
-            return View(postsMappedAndOrdered);
+            return View(postsMappedAndOrdered.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Posts/Details/5

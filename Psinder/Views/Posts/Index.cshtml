@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Psinder.Models.PostDTO>
+﻿@model PagedList.IPagedList<Psinder.Models.PostDTO>
+@using PagedList.Mvc;
+@using PagedList;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewData["Title"] = "Index";
@@ -29,7 +32,16 @@
 </p>
 
 <div id="allPost">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Znajdź po tytule @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+        </p>
+    }
     <h6 style="text-align:center;vertical-align:middle;margin-bottom: 0px;height: 35px;">Wszystkie ogłoszenia</h6>
+    @Html.ActionLink("Sortuj po ID", "Index", new { sortOrder = ViewBag.IndexSortParm })
+
 </div>
 <div class="flex-container">
 @foreach (var item in Model) {
@@ -61,3 +73,21 @@
         }
 </div>
 
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@*
+do analizy czemu nie działa    
+@Html.PagedListPager(Model,
+    page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+*@
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber-1)">Poprzedni</a></li>
+        <li class="page-item"><a class="page-link" href="Posts?Page=1">1</a></li>
+        <li class="page-item"><a class="page-link" href="Posts?Page=2">2</a></li>
+        <li class="page-item"><a class="page-link" href="Posts?Page=3">3</a></li>
+        <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber+1)">Następny</a></li>
+    </ul>
+</nav>
+                
