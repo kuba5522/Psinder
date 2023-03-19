@@ -72,7 +72,7 @@ namespace Psinder.Controllers
                 var imageFile = _fileStorage.GetImageFile(post.Id.ToString());
                 post.Image = imageFile;
             }
-            int pageSize = 6;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
 
             return View(postsMappedAndOrdered.ToPagedList(pageNumber, pageSize));
@@ -97,6 +97,7 @@ namespace Psinder.Controllers
         }
 
         // GET: Posts/Create
+        [Route("/Posts/Create")]
         public IActionResult Create()
         {
             return View();
