@@ -1,7 +1,9 @@
 {
   "dependencies": {
-    "mssql1": {
-      "type": "mssql.local",
+    "mssql2": {
+      "ignored": "true",
+      "suggestion": "true",
+      "type": "mssql",
       "connectionId": "ConnectionStrings:DefaultConnection"
     }
   }

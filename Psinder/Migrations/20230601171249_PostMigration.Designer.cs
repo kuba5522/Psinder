@@ -12,7 +12,7 @@ using Psinder.Data;
 namespace Psinder.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230304101449_PostMigration")]
+    [Migration("20230601171249_PostMigration")]
     partial class PostMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -258,7 +258,6 @@ namespace Psinder.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")

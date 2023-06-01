@@ -62,7 +62,7 @@ namespace Psinder.Migrations
                     Difficulty = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ContactPhone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ContactEmail = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
