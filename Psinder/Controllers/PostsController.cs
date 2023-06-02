@@ -147,9 +147,9 @@ namespace Psinder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] PostDTO post, IFormFile image)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] PostDTO postDto, IFormFile image)
         {
-            if (id != post.Id)
+            if (id != postDto.Id)
             {
                 return NotFound();
             }
@@ -158,12 +158,12 @@ namespace Psinder.Controllers
             {
                 try
                 {
-                    _context.Update(post);
+                    _context.Update(postDto);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PostExists(post.Id))
+                    if (!PostExists(postDto.Id))
                     {
                         return NotFound();
                     }
@@ -174,7 +174,7 @@ namespace Psinder.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(post);
+            return View(postDto);
         }
 
         // GET: Posts/Delete/5

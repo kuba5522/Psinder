@@ -7,33 +7,45 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+ 
+<head style="position:relative">
+    <h1 id="mainHeader">PSINDER</h1>
+</head>
 
-<p>
-    <a id="createNew" asp-action="Create">Utwórz nowe ogłoszenie</a>
-</p>
+<a asp-action="Create" asp-controller="Posts" id="createNew" style="position: absolute;top:180px;left:75%">+ Dodaj ogłoszenie</a>
+
+<div id="ShowAll">Wszystkie ogłoszenia</div>
 
 <div id="allPost">
     @using (Html.BeginForm())
     {
-        <p>
-            Znajdź po tytule @Html.TextBox("SearchString")
-            <input type="submit" value="Search" />
-        </p>
+        <p style="float: right"> Znajdź po tytule @Html.TextBox("SearchString")
+        <input type="submit" value="Search" /></p>
+        
     }
+    <div id="sortPosts">
     @Html.ActionLink("Sortuj po ID", "Index", new { sortOrder = ViewBag.IndexSortParm })
+    </div>
 </div>
 
 <div class="flex-container">
     @foreach (var item in Model)
     {
-        <a class="card" asp-action="Details" asp-route-id="@item.Id">
-            <img id="imagePost" src="~/images/licensed-image.jpg" alt="@item.Name">
-            <div id="headerPost">@Html.DisplayFor(modelItem => item.Name)</div>
-            <div id="destPost">@Html.DisplayFor(modelItem => item.Title)</div>
-        </a>
+        <div class="dog-card">
+            <img src="~/images/licensed-image.jpg" alt="@item.Name">
+            <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+            <p>@Html.DisplayFor(modelItem => item.Title)</p>
+            <a asp-action="Details" asp-route-id="@item.Id">
+                <div id="PoznajMnie">Poznaj mnie</div>
+            </a>
+        </div>
     }
 </div>
+
+
 @*
+TODO: Tak powinno być ale to nie działa nie wiadomo czemu,
+obecnie jest zrobione paging tak że można wyjechać poza ilość stron
 <p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>*@
 
 <nav aria-label="Page navigation example">
