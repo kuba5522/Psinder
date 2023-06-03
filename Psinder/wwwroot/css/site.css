@@ -294,6 +294,29 @@ body::before {
     font-weight: bold;
 }
 
+.post {
+    background-color: burlywood;
+}
+
+.form-group-center {
+    text-align: center;
+    font-weight: 700;
+}
+
+.form-group-right {
+    text-align: right;
+    font-weight: 700;
+}
+.form-group-left {
+    text-align: left;
+    font-weight: 700;
+}
+
+.form-control{
+    height:40px;
+    width: 90%;
+}
+
 
 
 
