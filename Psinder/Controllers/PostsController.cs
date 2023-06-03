@@ -219,6 +219,18 @@ namespace Psinder.Controllers
           return _context.Posts.Any(e => e.Id == id);
         }
 
+        public FileContentResult GetImage([FromRoute] int Id)
+        {
+            byte[]? imageData = _fileStorage.GetImageFile(Id.ToString());
 
+            if (imageData != null)
+            {
+                return File(imageData, "image/jpeg");
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

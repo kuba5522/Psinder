@@ -12,6 +12,7 @@
     <h1 id="mainHeader">PSINDER</h1>
 </head>
 
+<form enctype="multipart/form-data"></form>
 <a asp-action="Create" asp-controller="Posts" id="createNew" style="position: absolute;top:180px;left:75%">+ Dodaj ogłoszenie</a>
 
 <div id="ShowAll">Wszystkie ogłoszenia</div>
@@ -32,7 +33,7 @@
     @foreach (var item in Model)
     {
         <div class="dog-card">
-            <img src="~/images/licensed-image.jpg" alt="@item.Name">
+            <img src="@Url.Action("GetImage", "Posts", new {item.Id} )" />
             <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
             <p>@Html.DisplayFor(modelItem => item.Title)</p>
             <a asp-action="Details" asp-route-id="@item.Id">
