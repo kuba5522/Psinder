@@ -100,6 +100,12 @@ namespace Psinder.Controllers
         [Route("/Posts/Create")]
         public IActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                var path = "Identity/Account";
+                return RedirectToAction("Login", path);
+            }
+
             return View();
         }
 
@@ -111,6 +117,8 @@ namespace Psinder.Controllers
         [Route("/Posts/Create")]
         public async Task<IActionResult> Create([Bind("Id, Title,Name, Age, Size, Breed, Difficulty,Location,Description, ContactPhone, ContactEmail")] PostDTO postDto, IFormFile image)
         {
+
+
             if (ModelState.IsValid)
             {
                 var post = _mapper.Map<Post>(postDto);
