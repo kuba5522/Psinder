@@ -50,13 +50,13 @@ obecnie jest zrobione paging tak że można wyjechać poza ilość stron
 
 <nav aria-label="Page navigation example">
     <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber-1)">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber-1)">Poprzednia strona</a></li>
         @for (int i = 1; i <= Model.PageCount; i++)
         {
             <li class="page-item @(i == Model.PageNumber ? "active" : "")">
                 <a class="page-link" href="Posts?Page=@i">@i</a>
             </li>
         }
-        <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber+1)">Next</a></li>
+        <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber+1)">Następna strona</a></li>
     </ul>
 </nav>
