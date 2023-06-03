@@ -108,7 +108,8 @@ namespace Psinder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] PostDTO postDto, IFormFile image)
+        [Route("/Posts/Create")]
+        public async Task<IActionResult> Create([Bind("Id, Title,Name, Age, Size, Breed, Difficulty,Location,Description, ContactPhone, ContactEmail")] PostDTO postDto, IFormFile image)
         {
             if (ModelState.IsValid)
             {
