@@ -10,9 +10,9 @@ namespace Psinder.Models
         [Required]
         [Display(Name="Tytuł ogłoszenia")]
         public string Title { get; set; }
-        [Display(Name = "Imię")]
+        [Display(Name = "Imię psa")]
         public string Name { get; set; }
-        [Display(Name = "WIek")]
+        [Display(Name = "Wiek")]
         public int Age { get; set; }
         [Display(Name = "Rozmiar")]
         public string Size { get; set; }
