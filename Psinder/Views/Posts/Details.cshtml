@@ -13,6 +13,9 @@
     <h4>Post</h4>
     <hr />
     <dl class="row">
+        <dd>
+            <img src="@Url.Action("GetImage", "Posts", new {Model.Id} )" />
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
