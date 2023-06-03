@@ -137,10 +137,10 @@ body::before {
         background-color: #888585;
 }
 
-#number_background{
-
-
+.page-link1 {
+    background-color: #D9D9D9;
 }
+
 /*nawigacyjne rzeczy*/
 /*----------------------------------------------------------------*/
 .navbar {
@@ -306,6 +306,45 @@ body::before {
     font-weight: 400;
 }
 
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.upload-box {
+    width: 350px;
+    height: 300px;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.upload-box:hover {
+    border-color: #aaa;
+}
+
+    .upload-box img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .upload-box input[type="file"] {
+        display: none;
+    }
+
+    .upload-box .upload-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        color: #999;
+    }
+
 .main-form-group-center {
     text-align: center;
     font-weight: 700;
@@ -354,24 +393,61 @@ body::before {
     height: 350px;
 }
 
+.post-details {
+    background-color: #f9f9f9;
+    height: 600px;
+}
+
 #headerDetails {
-    background-color: blanchedalmond;
+    background-color: #ffe4c4;
     padding: 15px;
-    background-color: blanchedalmond
+    margin-bottom: 20px;
 }
 
-#descriptionDeails {
-    width: 40%;
-    background-color: cornsilk;
-    padding: 30px;
-    margin: 30px;
+#descriptionDetails {
+    flex: 1;
+    background-color: #fff8dc;
+    padding: 20px;
+    margin-right: 40px;
+    margin-bottom: 20px;
 }
 
-#propDetails {
-    word-spacing: 20px;
-    margin: 30px;
+.image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.image-container img {
+     max-width: 100%;
+     height: auto;
+}
+
+.property-details {
     font-weight: 700;
+    margin:30px;
 }
+
+.contact-details {
+    display: flex;
+    margin: 30px;
+}
+
+.contact-item {
+    flex: 1;
+    background-color: #fff;
+    padding: 10px;
+    margin-right: 100px;
+}
+
+.contact-item strong {
+        display: block;
+    }
+
+.contact-item span {
+        display: block;
+        margin-top: 5px;
+    }
 
 
 
