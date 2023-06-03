@@ -1,5 +1,5 @@
-/*K<olory aplikacji - tego siê trzymamy 
-    AA3C3C  - 30% - ten pomarañczowy
+/*K<olory aplikacji - tego siï¿½ trzymamy 
+    AA3C3C  - 30% - ten pomaraï¿½czowy
     whitesmoke  - 60% - ten jasny szary
     #333 - 10% - ten ciemny szary
 */
@@ -57,17 +57,17 @@ body::before {
     font-family: Arial, sans-serif;
     background-color: #AA3C3C;
     border: none;
-    color: white;
+    color: black;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 30px;
     margin: 10px 0;
     box-shadow: 5px 5px 5px #ccc;
     transition: background-color 0.3s ease;
-    background: linear-gradient(to bottom, #AA3C3C, #8F3030);
+    background: #F1BEBD
 }
 
 #createNew:hover {
@@ -123,18 +123,23 @@ body::before {
     margin: 0 10px;
     list-style: none;
 }
-/*TODO - to s¹ buttony do pagingu*/
+/*TODO - to sï¿½ buttony do pagingu*/
 .page-item a {
-        background-color: #AA3C3C;
+        background-color: #D9D9D9;
         border: 1px solid #ccc;
         color: #333;
         padding: 5px 10px;
         text-decoration: none;
         border-radius: 5px;
 }
-/*TODO - to s¹ te cyferki do pagingu */
+/*TODO - to sï¿½ te cyferki do pagingu */
 .page-item.active a {
-        background-color: #AA3C3C;
+        background-color: #888585;
+}
+
+#number_background{
+
+
 }
 /*nawigacyjne rzeczy*/
 /*----------------------------------------------------------------*/
@@ -186,10 +191,11 @@ body::before {
 }
 /*Strona startowa styl*/
 .description_container {
-    background: whitesmoke;
+    background: #850D01;
     padding: 30px;
     box-shadow: 5px 5px 5px #ccc;
     border-radius: 10px;
+    color: #fff;
 }
 
 
@@ -203,23 +209,24 @@ body::before {
 .dog-card {
     width: 30%;
     margin-bottom: 30px;
-    border: 1px solid #ddd;
+    border: 1px solid #CD705E;
     border-radius: 10px;
-    background-color: whitesmoke;
-    box-shadow: 5px 5px 5px #ccc;
+    background-color: #CD705E;
+    box-shadow: 5px 5px 5px CD705E;
     transition: transform 0.3s ease-in-out;
+    color: white
 }
 
 .dog-card:hover {
         transform: scale(1.1);
-        background-color: #ddd;
+        background-color: #CD705E;
     }
 
 
 .dog-card:hover a {
         font-weight: bold;
         color: whitesmoke;
-        background: linear-gradient(to bottom, rgba(170, 60, 60, 1), rgba(170, 60, 60, 0.9));
+        background: white;
     }
 
     .dog-card img {
@@ -236,7 +243,6 @@ body::before {
         border-bottom: 1px solid #ddd;
         text-align: center;
         font-weight: bold;
-        text-shadow: 1px 1px #ccc;
     }
 
 .dog-card p {
@@ -245,23 +251,24 @@ body::before {
         font-size: 18px;
         line-height: 1.5;
         text-align: center;
+        height: 160px;
 }
 
 #PoznajMnie {
     display: block;
     margin: auto auto 20px auto;
-    background-color: #AA3C3C;
+    background-color: #ffffff;
     border: none;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 10px 10px;
+    border-radius: 30px;
     font-size: 16px;
     box-shadow: 5px 5px 5px #ccc;
     transition: background-color 0.3s ease;
-    background: linear-gradient(to bottom, rgba(170, 60, 60, 0.8), rgba(170, 60, 60, 0.6));
     width: 50%;
     text-align: center;
+    color: black
 }
 
 #ShowAll {
@@ -272,10 +279,9 @@ body::before {
     color: white;
     text-decoration: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 16px;
-    box-shadow: 0px 0px 15px 3px rgba(170, 60, 60, 0.8);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.7s ease;
     background: linear-gradient(to bottom, #AA3C3C, #8F3030);
     width: 30%;
     text-align: center;
@@ -286,6 +292,29 @@ body::before {
     text-decoration: none;
     font-size: x-large;
     font-weight: bold;
+}
+
+.post {
+    background-color: burlywood;
+}
+
+.form-group-center {
+    text-align: center;
+    font-weight: 700;
+}
+
+.form-group-right {
+    text-align: right;
+    font-weight: 700;
+}
+.form-group-left {
+    text-align: left;
+    font-weight: 700;
+}
+
+.form-control{
+    height:40px;
+    width: 90%;
 }
 
 
