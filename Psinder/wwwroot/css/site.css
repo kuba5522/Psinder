@@ -317,7 +317,9 @@ body::before {
     width: 90%;
 }
 
-
+#labelPost {
+    height: 350px;
+}
 
 
 
