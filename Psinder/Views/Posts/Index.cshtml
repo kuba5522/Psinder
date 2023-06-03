@@ -19,7 +19,7 @@
 <div id="allPost">
     @using (Html.BeginForm())
     {
-        <p style="float: right"> Znajdź po tytule @Html.TextBox("SearchString")
+        <p style="float: right"> Wyszukaj @Html.TextBox("SearchString")
         <input type="submit" value="Search" /></p>
         
     }
@@ -36,7 +36,7 @@
             <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
             <p>@Html.DisplayFor(modelItem => item.Title)</p>
             <a asp-action="Details" asp-route-id="@item.Id">
-                <div id="PoznajMnie">Poznaj mnie</div>
+                <div id="PoznajMnie"; position: absolute; bottom: 20pf;>Poznaj mnie</div>
             </a>
         </div>
     }
@@ -49,14 +49,23 @@ obecnie jest zrobione paging tak że można wyjechać poza ilość stron
 <p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>*@
 
 <nav aria-label="Page navigation example">
-    <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber-1)">Previous</a></li>
-        @for (int i = 1; i <= Model.PageCount; i++)
-        {
-            <li class="page-item @(i == Model.PageNumber ? "active" : "")">
-                <a class="page-link" href="Posts?Page=@i">@i</a>
-            </li>
-        }
-        <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber+1)">Next</a></li>
-    </ul>
+    <div style = "backgroundcolor:black">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber-1)">Previous</a></li>
+
+            
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+            
+                <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                    <div id="number_background">
+                    <a class="page-link" href="Posts?Page=@i">@i</a>
+                    </div>
+                </li>
+            
+            }
+            
+            <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber+1)">Next</a></li>
+        </ul>
+    </div>
 </nav>
