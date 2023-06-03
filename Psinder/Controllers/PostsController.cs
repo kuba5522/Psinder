@@ -140,6 +140,11 @@ namespace Psinder.Controllers
             {
                 return NotFound();
             }
+            if (User.Identity.Name != post.ContactEmail)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
             return View(post);
         }
 
