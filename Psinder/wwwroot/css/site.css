@@ -321,5 +321,24 @@ body::before {
     height: 350px;
 }
 
+#headerDetails {
+    background-color: blanchedalmond;
+    padding: 15px;
+    background-color: blanchedalmond
+}
+
+#descriptionDeails {
+    width: 40%;
+    background-color: cornsilk;
+    padding: 30px;
+    margin: 30px;
+}
+
+#propDetails {
+    word-spacing: 20px;
+    margin: 30px;
+    font-weight: 700;
+}
+
 
 
