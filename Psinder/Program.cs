@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Psinder.Data;
 using Psinder.Mappings;
 using Psinder.Services;
+using Psinder.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
