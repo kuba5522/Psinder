@@ -15,6 +15,7 @@
                 var imagePath = Path.Combine(_filePath, fileName);
                 var fileStream = System.IO.File.Create(imagePath);
                 fileStream.Write(file, 0, file.Length);
+                fileStream.Close();
                 return true;
             }
             catch (Exception ex)

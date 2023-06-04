@@ -125,7 +125,7 @@ namespace Psinder.Controllers
 
                 var stream = image.OpenReadStream();
                 byte[] buffer = new byte[stream.Length];
-                stream.ReadAsync(buffer, 0, buffer.Length);
+                await stream.ReadAsync(buffer, 0, buffer.Length);
                 _fileStorage.SaveFile(buffer, post.Id.ToString());
 
                 return RedirectToAction(nameof(Index));
@@ -173,6 +173,13 @@ namespace Psinder.Controllers
                 {
                     _context.Update(_mapper.Map<Post>(postDto));
                     await _context.SaveChangesAsync();
+
+                    var stream = image.OpenReadStream();
+                    byte[] buffer = new byte[stream.Length];
+                    await stream.ReadAsync(buffer, 0, buffer.Length);
+                    _fileStorage.SaveFile(buffer, id.ToString());
+
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
