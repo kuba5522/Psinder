@@ -6,11 +6,11 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<div class="row">
+<div class="row" style = "position: left">
     <div class="col-md-4">
         <section>
             <form id="account" method="post">
-                <h2 style="width: 1200px">Użyj swojego konta do zalogowania.</h2>
+                <h2 style="width: 1200px;">Użyj swojego konta do zalogowania.</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -32,14 +32,14 @@
                     </div>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Zaloguj się</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary" style= " color: white; background-color: #850D01; border-color: #850D01">Zaloguj się</button>
                 </div>
                 <div>
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Zapomniałeś hasła?</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword" style= "color: #850D01;">Zapomniałeś hasła?</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Zarejestruj się jako nowy użytkownik.</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style= "color: #850D01;">Zarejestruj się jako nowy użytkownik.</a>
                     </p>
                    
                 </div>
