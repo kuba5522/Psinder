@@ -1,4 +1,6 @@
-﻿<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+﻿@model IEnumerable<Psinder.Models.PostDTO>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewData["Title"] = "Strona startowa";
@@ -19,35 +21,19 @@
             Naszą misją jest łączenie potrzebujących domu i miłości zwierząt oraz ludzi, którzy chcą je nimi obdarzyć, w zamian otrzymując niemniejsze pokłady ciepła, przyjaźni i wdzięczności.
     </div>
 
-
-
-    <div class="container">
-        <div class="dog-list">
-         <div class="dog-card">
-                <img src="~/images/licensed-image.jpg" alt="Pies 1" />
-                <h2>"Korti"</h2>
-                <p>
-                    Przyjazny, radosny i uwielbia długie spacery !
-                </p>
-                <a id="PoznajMnie">Poznaj mnie</a>
-            </div>
-            <div class="dog-card">
-                <img src="~/images/licensed-image.jpg" alt="Pies 2" />
-                <h2>"Luna"</h2>
-                <p>
-                    Malutka i pełna energii ! Wygląda niepozornie ale potrafi pokazać ząbki. Piesek nie może zostać w domu ze względu na alergię.
-                </p>
-                <a id="PoznajMnie">Poznaj mnie</a>
-            </div>
-            <div class="dog-card">
-                <img src="~/images/licensed-image.jpg" alt="Pies 3" />
-                <h2>"Rex"</h2>
-                <p>
-                    Piesek, który już długo czeka, a nie wiemy dlaczego ? Oferuje całe serduszko, jest grzeczny i posłuszny. Tylko trochę nieśmiały...
-                </p>
-                <a id="PoznajMnie">Poznaj mnie</a>
-            </div>
+    <div class="flex-container">
+    @foreach (var item in Model)
+    {
+        <div class="dog-card">
+            <img src="@Url.Action("GetImage", "Posts", new {item.Id} )" />
+            <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+            <p>@Html.DisplayFor(modelItem => item.Title)</p>
+            <a asp-action="Details" asp-controller="Posts" asp-route-id="@item.Id">
+                <div id="PoznajMnie"; position: absolute; bottom: 20pf;>Poznaj mnie</div>
+            </a>
         </div>
+    }
+</div>
 
         <a asp-action="Index" asp-controller="Posts" id="ShowAll">Pokaż wszystkie!</a>
 </div>
