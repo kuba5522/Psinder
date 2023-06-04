@@ -24,11 +24,18 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group-center">
                
+    <div class="post",>
+        <div class="main-form-group-center">Nowe ogłoszenie</div>
+        <form asp-controller="Posts" asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group-center">
                 <input asp-for="Title" class="form-control" width: 95%; />
                 <span asp-validation-for="Title" class="text-danger"></span>
                 <label asp-for="Title" class="control-label"></label>
             </div>
             <div class="form-group-center">
+                <label asp-for="Description" class="control-label"></label>*
+                <input asp-for="Description" class="form-control" style="height: 100px;width: 95%;" />
                 <input asp-for="Description" class="form-control" style="height: 100px;width: 100%;" />
                 <span asp-validation-for="Description" class="text-danger"></span>
                 <label asp-for="Description" class="control-label"></label>
