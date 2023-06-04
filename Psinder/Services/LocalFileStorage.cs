@@ -2,7 +2,7 @@
 {
     public class LocalStorageProvider : IFileStorage
     {
-        private readonly string _filePath = @"\PostsImages";
+        private readonly string _filePath = Environment.CurrentDirectory+@"\PostsImages";
 
         public bool SaveFile(byte[] file, string fileName)
         {
@@ -15,6 +15,7 @@
                 var imagePath = Path.Combine(_filePath, fileName);
                 var fileStream = System.IO.File.Create(imagePath);
                 fileStream.Write(file, 0, file.Length);
+                fileStream.Close();
                 return true;
             }
             catch (Exception ex)
