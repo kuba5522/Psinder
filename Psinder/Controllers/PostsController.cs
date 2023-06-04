@@ -117,8 +117,6 @@ namespace Psinder.Controllers
         [Route("/Posts/Create")]
         public async Task<IActionResult> Create([Bind("Id, Title,Name, Age, Size, Breed, Difficulty,Location,Description, ContactPhone, ContactEmail")] PostDTO postDto, IFormFile image)
         {
-
-
             if (ModelState.IsValid)
             {
                 var post = _mapper.Map<Post>(postDto);
@@ -153,7 +151,7 @@ namespace Psinder.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(post);
+            return View(_mapper.Map<PostDTO>(post));
         }
 
         // POST: Posts/Edit/5
@@ -161,7 +159,8 @@ namespace Psinder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] PostDTO postDto, IFormFile image)
+//        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ImagePath, ContactPhone, ContactEmail")] PostDTO postDto, IFormFile image)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Name, Age, Size, Breed, Difficulty,Location,Description, ContactPhone, ContactEmail")] PostDTO postDto, IFormFile image)
         {
             if (id != postDto.Id)
             {
