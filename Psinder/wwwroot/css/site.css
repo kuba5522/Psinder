@@ -427,6 +427,13 @@ body::before {
     font-weight: 700;
     margin:30px;
 }
+.property-details div + div {
+     margin-top: 10px;
+
+}
+.property-details div strong {
+   padding-right: 20px;
+}
 
 .contact-details {
     display: flex;
