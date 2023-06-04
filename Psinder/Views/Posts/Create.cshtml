@@ -5,10 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
  <script>
-          var loadFile = function(event) {
-              var image = document.getElementById('output');
-              image.src=URL.createObjectURL(event.target.files[0]);
-          };
+    var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        var uploadText = document.getElementById('upload-text');
+        uploadText.style.display = 'none';
+    };
       </script>
 
 <head style="position:relative">
@@ -17,82 +19,82 @@
 
 <a id="backToList" asp-action="Index">&#129044 Wróć do ogłoszeń</a>
 
-<div class="row">
+<div class="row" style="width: 800px;">
     <div class="post",>
         <div class="main-form-group-center">Nowe ogłoszenie</div>
         <form asp-controller="Posts" asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group-center">
                
-                <input asp-for="Title" class="form-control" width: 95%; />
+                <input asp-for="Title" class="form-control" width: 95%; />*
                 <span asp-validation-for="Title" class="text-danger"></span>
                 <label asp-for="Title" class="control-label"></label>
             </div>
             <div class="form-group-center">
-                <input asp-for="Description" class="form-control" style="height: 100px;width: 100%;" />
+                <input asp-for="Description" class="form-control" style="height: 100px;width: 100%;" />*
                 <span asp-validation-for="Description" class="text-danger"></span>
                 <label asp-for="Description" class="control-label"></label>
             </div>
-
-   <div style="width:45%; float:right">
+    <div class="container">
+            <div style="width:50%; float:left;">
             <div class="form-group-center">
-                <input asp-for="Age" class="form-control" />
+                <label for="Image"></label>
+                <label class="upload-box">
+                    <input type="file" name="Image" accept="image/*" onchange="loadFile(event)" />
+                    <img id="output" />
+                    <span id="upload-text" class="upload-text">Upload</span>
+                </label>
+            </div>
+            </div>
+
+        <div style="width:45%">
+            <div class="form-group-center">
+                <input asp-for="Age" class="form-control" />*
                 <span asp-validation-for="Age" class="text-danger"></span>
                 <label asp-for="Age" class="control-label"></label>
             </div>
             <div class="form-group-center">
-                <input asp-for="Size" class="form-control" />
+                <input asp-for="Size" class="form-control" />*
                 <span asp-validation-for="Size" class="text-danger"></span>
                 <label asp-for="Size" class="control-label"></label>
             </div>
             <div class="form-group-center">
-                <input asp-for="Breed" class="form-control" />
+                <input asp-for="Breed" class="form-control" />*
                 <span asp-validation-for="Breed" class="text-danger"></span>
                 <label asp-for="Breed" class="control-label"></label>
             </div>
             <div class="form-group-center">
-                <input asp-for="Difficulty" class="form-control" />
+                <input asp-for="Difficulty" class="form-control" />*
                 <span asp-validation-for="Difficulty" class="text-danger"></span>
                 <label asp-for="Difficulty" class="control-label"></label>
             </div>
             <div class="form-group-center">
-                <input asp-for="Location" class="form-control" />
+                <input asp-for="Location" class="form-control" />*
                 <span asp-validation-for="Location" class="text-danger"></span>
                 <label asp-for="Location" class="control-label"></label>
             </div>
-            </div>
-            <div style="width:50%; float:left;">
+        </div>
 
-@*            <div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>*@
-            <div class="form-group-center">
-                <label for="Image"></label>
-                <input type="file" name="Image" accept="image/*" onchange="loadFile(event)" style="height:206px" />
-            </div>
-            <p><img id="output" width="200"/></p>
-
-                <div class="form-group-center">
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                    <label asp-for="Name" class="control-label"></label>
-                </div>
-            </div>
-
+      </div>
+            
+         <div class="form-group-center">
+              <input asp-for="Name" class="form-control" />*
+              <span asp-validation-for="Name" class="text-danger"></span>
+              <label asp-for="Name" class="control-label"></label>
+        </div>
+                
         <div class="dane_kontaktowe-form-group-center">Dane kontaktowe</div>
 
             <div style="width:50%; float:left;">
             <div class="form-group-center">
-                <input asp-for="ContactPhone" class="form-control"/>
+                <input asp-for="ContactPhone" class="form-control"/>*
                 <span asp-validation-for="ContactPhone" class="text-danger"></span>
                 <label asp-for="ContactPhone" class="control-labelL"></label>
             </div>
             </div>
             <div style="width:50%; float:right;">
             <div class="form-group-center">
-                <input asp-for="ContactEmail" class="form-control" />
+                <input asp-for="ContactEmail" class="form-control" />*
                 <span asp-validation-for="ContactEmail" class="text-danger"></span>
                 <label asp-for="ContactEmail" class="control-label"></label>
             </div>
