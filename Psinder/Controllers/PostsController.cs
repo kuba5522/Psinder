@@ -171,7 +171,7 @@ namespace Psinder.Controllers
             {
                 try
                 {
-                    _context.Update(postDto);
+                    _context.Update(_mapper.Map<Post>(postDto));
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
