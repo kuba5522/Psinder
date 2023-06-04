@@ -11,52 +11,53 @@
 <a id="backToList" asp-action="Index">&#129044 Wróć do ogłoszeń</a>
 
 <div class="row">
-  <div class="post-details">
-    <div id="headerDetails">
-      <div class="form-group-center">
-        <h2>@Html.DisplayFor(model => model.Name)</h2>
-      </div>
-      <div class="form-group-center">
-        <h3>@Html.DisplayFor(model => model.Title)</h3>
-      </div>
-    </div>
+    <div class="post-details">
+        <div id="headerDetails">
+            <div class="form-group-center">
+                <h2>@Html.DisplayFor(model => model.Name)</h2>
+            </div>
+            <div class="form-group-center">
+                <h3>@Html.DisplayFor(model => model.Title)</h3>
+            </div>
+        </div>
 
-    <div class="container">
-      <div id="descriptionDetails">
-        <p>@Html.DisplayFor(model => model.Description)</p>
-      </div>
+        <div class="container">
+            <div id="descriptionDetails">
+                <p>@Html.DisplayFor(model => model.Description)</p>
+            </div>
 
-      <div class="image-container">
-        <img src="@Url.Action("GetImage", "Posts", new {Model.Id})" alt="Post Image" />
-      </div>
-    </div>
+            <div class="image-container">
+                <img src="@Url.Action("GetImage", "Posts", new {Model.Id})" alt="Post Image" />
+            </div>
+        </div>
+        <div class="container">
+            <div class="property-details">
+                <div>
+                    <strong>@Html.DisplayNameFor(model => model.Breed):</strong>
+                    <span>@Html.DisplayFor(model => model.Breed)</span>
+                </div>
+                <div>
+                    <strong>@Html.DisplayNameFor(model => model.Age):</strong>
+                    <span>@Html.DisplayFor(model => model.Age)</span>
+                </div>
+                <div>
+                    <strong>@Html.DisplayNameFor(model => model.Size):</strong>
+                    <span>@Html.DisplayFor(model => model.Size)</span>
+                </div>
+            </div>
 
-    <div class="property-details">
-      <div>
-        <strong>@Html.DisplayNameFor(model => model.Breed):</strong>
-        <span>@Html.DisplayFor(model => model.Breed)</span>
-      </div>
-      <div>
-        <strong>@Html.DisplayNameFor(model => model.Age):</strong>
-        <span>@Html.DisplayFor(model => model.Age)</span>
-      </div>
-      <div>
-        <strong>@Html.DisplayNameFor(model => model.Size):</strong>
-        <span>@Html.DisplayFor(model => model.Size)</span>
-      </div>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <strong>@Html.DisplayNameFor(model => model.ContactPhone):</strong>
+                    <span>@Html.DisplayFor(model => model.ContactPhone)</span>
+                </div>
+                <div class="contact-item">
+                    <strong>@Html.DisplayNameFor(model => model.ContactEmail):</strong>
+                    <span>@Html.DisplayFor(model => model.ContactEmail)</span>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="contact-details">
-      <div class="contact-item">
-        <strong>@Html.DisplayNameFor(model => model.ContactPhone):</strong>
-        <span>@Html.DisplayFor(model => model.ContactPhone)</span>
-      </div>
-      <div class="contact-item">
-        <strong>@Html.DisplayNameFor(model => model.ContactEmail):</strong>
-        <span>@Html.DisplayFor(model => model.ContactEmail)</span>
-      </div>
-    </div>
-  </div>
 </div>
 
 
