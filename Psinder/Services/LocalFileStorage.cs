@@ -2,7 +2,7 @@
 {
     public class LocalStorageProvider : IFileStorage
     {
-        private readonly string _filePath = @"\PostsImages";
+        private readonly string _filePath = Environment.CurrentDirectory+@"\PostsImages";
 
         public bool SaveFile(byte[] file, string fileName)
         {
