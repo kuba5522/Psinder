@@ -7,7 +7,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
- 
+
 <div style="position:relative">
     <h1 id="mainHeader">PSINDER</h1>
 </div>
@@ -20,12 +20,14 @@
 <div id="allPost">
     @using (Html.BeginForm())
     {
-        <p style="float: right"> @Html.TextBox("SearchString")
-        <input type="submit" value="Wyszukaj" /></p>
-        
+        <p style="float: right">
+            @Html.TextBox("SearchString")
+            <input type="submit" value="Wyszukaj" />
+        </p>
+
     }
     <div id="sortPosts">
-    @Html.ActionLink("Sortuj po ID", "Index", new { sortOrder = ViewBag.IndexSortParm })
+        @Html.ActionLink("Sortuj po ID", "Index", new { sortOrder = ViewBag.IndexSortParm })
     </div>
 </div>
 
@@ -37,7 +39,7 @@
             <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
             <p>@Html.DisplayFor(modelItem => item.Title)</p>
             <a asp-action="Details" asp-route-id="@item.Id">
-                <div id="PoznajMnie"; position: absolute; bottom: 20pf;>Poznaj mnie</div>
+                <div id="PoznajMnie" ; position: absolute; bottom: 20pf;>Poznaj mnie</div>
             </a>
         </div>
     }
@@ -50,21 +52,39 @@ obecnie jest zrobione paging tak że można wyjechać poza ilość stron
 <p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>*@
 
 <nav aria-label="Page navigation example">
-    <div style = "backgroundcolor:black">
+    <div style="backgroundcolor:black">
         <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber-1)">Poprzedni</a></li>
+            <li class="page-item">
+                @if (!Model.IsFirstPage)
+                {
+                    <a class="page-link" href="Posts?Page=@(Model.PageNumber-1)">Poprzedni</a>
+                }
+                else
+                {
+                    <a class="inactive-page-link" >Poprzedni</a>
+                }   
+            </li>
 
-            
+
             @for (int i = 1; i <= Model.PageCount; i++)
             {
-            
+
                 <li class="page-item @(i == Model.PageNumber ? "active" : "")">
-                    <a class="page-link1" href="Posts?Page=@i">@i</a>
+                    <a class="inactive-page-link" href="Posts?Page=@i">@i</a>
                 </li>
-            
+
             }
-            
-            <li class="page-item"><a class="page-link" href="Posts?Page=@(Model.PageNumber+1)">Następny</a></li>
+
+            <li class="page-item">
+                @if (!Model.IsLastPage)
+                {
+                    <a class="page-link" href="Posts?Page=@(Model.PageNumber+1)">Następny</a>
+                }
+                else
+                {
+                    <a class="inactive-page-link">Następny</a>
+                }
+            </li>
         </ul>
     </div>
 </nav>

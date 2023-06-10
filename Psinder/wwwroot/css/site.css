@@ -144,6 +144,10 @@ body::before {
     background-color: #D9D9D9;
 }
 
+.inactive-page-link{
+    color :dimgray;
+}
+
 /*nawigacyjne rzeczy*/
 /*----------------------------------------------------------------*/
 .navbar {

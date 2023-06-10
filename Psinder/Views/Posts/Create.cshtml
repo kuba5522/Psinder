@@ -94,8 +94,8 @@
             </div>
             <div style="width:50%; float:right;">
             <div class="form-group-center">
-                <input asp-for="ContactEmail" class="form-control" readonly placeholder=@User.Identity.Name/>*
-                <span asp-validation-for="ContactEmail" class="text-danger"></span>
+                <input asp-for="ContactEmail" class="form-control" readonly value=@User.Identity.Name/>*
+                @*<span asp-validation-for="ContactEmail" class="text-danger"></span>*@
                 <label asp-for="ContactEmail" class="control-label"></label>
             </div>
         </div>

@@ -72,7 +72,7 @@ namespace Psinder.Controllers
                 var imageFile = _fileStorage.GetImageFile(post.Id.ToString());
                 post.Image = imageFile;
             }
-            int pageSize = 12;
+            int pageSize = 9;
             int pageNumber = (page ?? 1);
 
             return View(postsMappedAndOrdered.ToPagedList(pageNumber, pageSize));
