@@ -26,6 +26,9 @@ body {
     background-size: cover;
 }
 
+main{
+    width:inherit
+}
 
 body::before {
         content: "";
