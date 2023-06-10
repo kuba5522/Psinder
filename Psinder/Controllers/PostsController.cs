@@ -38,10 +38,10 @@ namespace Psinder.Controllers
             {
                 page = 1;
             }
-            else
-            {
-                searchString = currentFilter;
-            }
+            //else
+            //{
+            //    searchString = currentFilter;
+            //}
 
             ViewBag.CurrentFilter = searchString;
 
@@ -50,7 +50,7 @@ namespace Psinder.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                posts = posts.Where(p => p.Title.Contains(searchString)
+                posts = posts.Where(p => p.Title.Contains(searchString) || p.Name.Contains(searchString)
                                        || p.Description.Contains(searchString));
             }
             switch(sortOrder)

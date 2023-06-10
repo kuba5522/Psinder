@@ -212,7 +212,7 @@ body::before {
     border: 1px solid #CD705E;
     border-radius: 10px;
     background-color: #CD705E;
-    box-shadow: 5px 5px 5px CD705E;
+    box-shadow: 5px 5px 5px 5px;
     transition: transform 0.3s ease-in-out;
     color: white
 }
@@ -285,6 +285,8 @@ body::before {
     background: linear-gradient(to bottom, #AA3C3C, #8F3030);
     width: 30%;
     text-align: center;
+    white-space:nowrap;
+    width:fit-content
 }
 
 #backToList {

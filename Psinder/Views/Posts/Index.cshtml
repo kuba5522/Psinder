@@ -8,14 +8,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
  
-<head style="position:relative">
+<div style="position:relative">
     <h1 id="mainHeader">PSINDER</h1>
-</head>
+</div>
 
 <form enctype="multipart/form-data"></form>
 <a asp-action="Create" asp-controller="Posts" id="createNew" style="position: absolute;top:180px;left:75%">+ Dodaj ogłoszenie</a>
 
-<div id="ShowAll">Wszystkie ogłoszenia</div>
+<a id="ShowAll" asp-area="" asp-controller="Posts" asp-action="Index">Wszystkie ogłoszenia</a>
 
 <div id="allPost">
     @using (Html.BeginForm())
