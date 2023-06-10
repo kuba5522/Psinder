@@ -102,7 +102,6 @@ namespace Psinder.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                var path = "Identity/Account";
                 return Redirect("~/Identity/Account/Login");
             }
 

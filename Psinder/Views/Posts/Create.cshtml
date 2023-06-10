@@ -13,9 +13,9 @@
     };
       </script>
 
-<head style="position:relative">
+<div style="position:relative">
     <h1 id="mainHeader">PSINDER</h1>
-</head>
+</div>
 
 <a id="backToList" asp-action="Index">&#129044 Wróć do ogłoszeń</a>
 
@@ -94,7 +94,7 @@
             </div>
             <div style="width:50%; float:right;">
             <div class="form-group-center">
-                <input asp-for="ContactEmail" class="form-control" />*
+                <input asp-for="ContactEmail" class="form-control" readonly placeholder=@User.Identity.Name/>*
                 <span asp-validation-for="ContactEmail" class="text-danger"></span>
                 <label asp-for="ContactEmail" class="control-label"></label>
             </div>
